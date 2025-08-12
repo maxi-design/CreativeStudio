@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor de Respuestas Automáticas</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 py-10 px-4 font-sans">
+  <div class="max-w-2xl mx-auto bg-white p-6 rounded-xl shadow-md">
+    <h2 class="text-2xl font-bold mb-4">Respuestas Automáticas</h2>
+
+    <form id="addForm" class="flex flex-col sm:flex-row gap-3 mb-6">
+      <input type="text" id="keyword" placeholder="Palabra clave" required class="flex-1 border rounded px-3 py-2">
+      <input type="text" id="response" placeholder="Respuesta" required class="flex-1 border rounded px-3 py-2">
+      <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Agregar</button>
+    </form>
+
+    <div id="responseList" class="space-y-2">
+      <!-- Respuestas cargadas desde PHP -->
+    </div>
+  </div>
+
+  <script>
+    function loadResponses() {
+      fetch('get-auto-responses.php')
+        .then(res => res.json())
+        .then(data => {
+          const list = document.getElementById('responseList');
+          list.innerHTML = '';
+          data.forEach(row => {
+            const div = document.createElement('div');
+            div.className = 'bg-gray-50 p-3 border rounded flex justify-between items-center';
+            div.innerHTML = `
+              <div><strong>${row.keyword}</strong>: ${row.response}</div>
+              <button onclick="deleteAutoResponse(${row.id})" class="text-red-600 hover:underline text-sm">Eliminar</button>
+            `;
+            list.appendChild(div);
+          });
+        });
+    }
+
+    function deleteAutoResponse(id) {
+      if (!confirm('¿Estás seguro de que deseas eliminar esta respuesta automática?')) return;
+
+      fetch('delete-auto-response.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id })
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.status === 'ok') {
+          alert('Respuesta eliminada correctamente');
+          loadResponses();
+        } else {
+          alert('Error al eliminar: ' + data.message);
+        }
+      })
+      .catch(error => {
+        console.error('Error en la solicitud:', error);
+        alert('No se pudo conectar con el servidor.');
+      });
+    }
+
+    document.getElementById('addForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const keyword = document.getElementById('keyword').value.trim();
+      const response = document.getElementById('response').value.trim();
+      if (!keyword || !response) return;
+
+      fetch('add-auto-response.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ keyword, response })
+      }).then(() => {
+        document.getElementById('keyword').value = '';
+        document.getElementById('response').value = '';
+        loadResponses();
+      });
+    });
+
+    loadResponses();
+  </script>
+</body>
+</html>

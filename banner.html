@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CreativeStudio - Agencia de Diseño Gráfico</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6366f1',
+            secondary: '#f59e0b',
+            accent: '#ec4899'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+
+    .shape {
+      position: absolute;
+      transition: transform 2s ease-in-out;
+    }
+    #banner-anim-container {
+      position: relative;
+      width: 100%;
+      height: 24rem;
+      overflow: hidden;
+    }
+    @keyframes moveRandom {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(var(--x), var(--y)); }
+      100% { transform: translate(0, 0); }
+    }
+  </style>
+</head>
+<body class="bg-gray-50">
+
+  <!-- Hero Section con animación -->
+  <section id="inicio" class="gradient-bg pt-20 pb-16 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h1 class="text-5xl font-bold mb-6 leading-tight">
+            Diseño que <span class="text-secondary">impulsa</span> tu marca
+          </h1>
+          <p class="text-xl mb-8 text-gray-200">
+            Creamos identidades visuales únicas y memorables que conectan con tu audiencia y hacen crecer tu negocio.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <button onclick="document.getElementById('contacto').scrollIntoView({behavior: 'smooth'})"
+              class="bg-secondary text-gray-900 px-8 py-3 rounded-lg font-semibold hover:bg-yellow-500 transition-colors">
+              Comenzar Proyecto
+            </button>
+            <button onclick="document.getElementById('portafolio').scrollIntoView({behavior: 'smooth'})"
+              class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-gray-900 transition-colors">
+              Ver Trabajos
+            </button>
+          </div>
+        </div>
+        <div id="banner-anim-container" class="relative">
+          <div class="shape" id="circle" style="--x: 80px; --y: -60px; left: 10%; top: 20%;">
+            <svg width="60" height="60">
+              <circle cx="30" cy="30" r="30" fill="#6366f1" />
+            </svg>
+          </div>
+
+          <div class="shape" id="rect1" style="--x: -100px; --y: 50px; left: 50%; top: 10%;">
+            <svg width="100" height="60">
+              <rect width="100" height="60" rx="15" fill="#f59e0b" />
+            </svg>
+          </div>
+
+          <div class="shape" id="rect2" style="--x: 60px; --y: 100px; left: 30%; top: 50%;">
+            <svg width="80" height="80">
+              <rect width="80" height="80" rx="20" fill="#ec4899" />
+            </svg>
+          </div>
+
+          <div class="shape" id="line1" style="--x: -70px; --y: -80px; left: 70%; top: 40%;">
+            <svg width="4" height="100">
+              <rect width="4" height="100" fill="white" />
+            </svg>
+          </div>
+
+          <div class="shape" id="line2" style="--x: 90px; --y: 70px; left: 20%; top: 70%;">
+            <svg width="100" height="4">
+              <rect width="100" height="4" fill="white" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resto del contenido -->
+  <script>
+    // Animación inicial aleatoria
+    const shapes = document.querySelectorAll('.shape');
+    shapes.forEach(shape => {
+      shape.style.animation = 'moveRandom 3s ease-in-out';
+    });
+
+    // Agrupación para formar letra "C"
+    setTimeout(() => {
+      document.getElementById('circle').style.transform = 'translate(150px, 50px)';
+      document.getElementById('rect1').style.transform = 'translate(80px, 60px)';
+      document.getElementById('rect2').style.transform = 'translate(80px, 160px)';
+      document.getElementById('line1').style.transform = 'translate(70px, 110px)';
+      document.getElementById('line2').style.transform = 'translate(150px, 220px)';
+    }, 3000);
+  </script>
+</body>
+</html>

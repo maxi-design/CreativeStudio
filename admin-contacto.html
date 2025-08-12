@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrar Mensajes de Contacto</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 py-10 px-4 font-sans">
+  <div class="max-w-6xl mx-auto bg-white p-6 rounded-xl shadow-md">
+    <h2 class="text-2xl font-bold mb-6 text-center">Mensajes de Contacto</h2>
+    <table class="w-full text-sm text-left border">
+      <thead class="bg-gray-200">
+        <tr>
+          <th class="px-4 py-2 border">Nombre</th>
+          <th class="px-4 py-2 border">Apellidos</th>
+          <th class="px-4 py-2 border">Email</th>
+          <th class="px-4 py-2 border">Mensaje</th>
+          <th class="px-4 py-2 border">Fecha</th>
+        </tr>
+      </thead>
+      <tbody id="tabla-mensajes">
+        <!-- Mensajes cargados vía JavaScript -->
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    fetch('ver-mensajes-contacto.php')
+      .then(res => res.json())
+      .then(data => {
+        const tbody = document.getElementById('tabla-mensajes');
+        tbody.innerHTML = '';
+        data.forEach(msg => {
+          const row = document.createElement('tr');
+          row.classList.add('border-t');
+          row.innerHTML = `
+            <td class="px-4 py-2 border">${msg.nombre}</td>
+            <td class="px-4 py-2 border">${msg.apellidos}</td>
+            <td class="px-4 py-2 border">${msg.email}</td>
+            <td class="px-4 py-2 border">${msg.mensaje}</td>
+            <td class="px-4 py-2 border">${msg.fecha}</td>
+          `;
+          tbody.appendChild(row);
+        });
+      });
+  </script>
+</body>
+</html>
