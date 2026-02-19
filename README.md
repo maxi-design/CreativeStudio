@@ -25,14 +25,15 @@ Este proyecto funciona como plantilla base para sitios de agencias digitales o e
 - Sección de servicios
 - Portfolio de proyectos
 - Testimonios de clientes (demo)
-- Formulario de contacto (demo frontend)
+- Formulario de contacto con estructura frontend lista para integración con backend
 - Navegación optimizada
 - Interfaz enfocada en experiencia de usuario
 
 ## ⚠ Estado del proyecto
 
-Proyecto demostrativo / template frontend.  
-El formulario de contacto es solo visual y no está conectado a backend o base de datos.
+Proyecto demostrativo / template web.
+El proyecto incluye frontend completo y estructura backend en PHP para procesamiento de formularios.
+La conexión a base de datos no está configurada en esta versión de demostración.
 
 ## 📷 Capturas
 
@@ -41,7 +42,9 @@ El formulario de contacto es solo visual y no está conectado a backend o base d
 ## 💻 Uso local
 
 1. Clonar repositorio
-2. Abrir `index.html` en el navegador
+2. Ejecutar en servidor local (XAMPP, WAMP o similar)
+3. Configurar base de datos si se desea usar el backend
+4. Abrir index.html o acceder desde localhost
 
 ## 📌 Objetivo del proyecto
 
@@ -52,6 +55,12 @@ Demostrar habilidades en:
 - Estructura de sitios web
 - Diseño responsive
 - Experiencia de usuario
+
+## Mejoras futuras
+- Integración completa con base de datos
+- Panel de administración
+- Sistema de autenticación
+- Validación backend
 
 ---
 
