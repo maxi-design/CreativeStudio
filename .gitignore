@@ -1,0 +1,12 @@
+# Ignorar configuración real de base de datos
+php/config/config.php
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de entorno
+.env
+
+# Carpeta node (si alguna vez agregas herramientas)
+node_modules/
