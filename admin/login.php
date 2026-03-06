@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   </style>
 </head>
 <body>
-  <div class="card">
+  <div class="admin-card">
     <h1 style="margin:0 0 6px; font-size:20px;">Panel Admin</h1>
     <p style="margin:0 0 16px; opacity:.8;">Ingresá para ver los mensajes del formulario.</p>
 

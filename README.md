@@ -44,6 +44,7 @@ Full-stack portfolio project: responsive landing page for creative services with
 ---
 
 # Project Structure
+```bash
 CreativeStudio/
 │
 ├── index.html
@@ -51,35 +52,31 @@ CreativeStudio/
 ├── .gitignore
 │
 ├── admin/
-│ ├── login.php
-│ ├── logout.php
-│ └── messages.php
+│   ├── login.php
+│   ├── logout.php
+│   └── messages.php
 │
 ├── assets/
-│ ├── css/
-│ │ └── style.css
-│ │
-│ ├── js/
-│ │ └── main.js
-│ │
-│ └── img/
-│ └── chat-user.jpg
+│   ├── css/
+│   │   └── style.css
+│   ├── js/
+│   │   └── main.js
+│   └── img/
+│       └── chat-user.jpg
 │
 └── php/
-├── admin/
-│ └── auth.php
-│
-├── chat/
-│ ├── get.php
-│ └── send.php
-│
-├── config/
-│ ├── config.example.php
-│ ├── config.php (ignored by git)
-│ └── response.php
-│
-└── contact/
-└── save.php
+    ├── admin/
+    │   └── auth.php
+    ├── chat/
+    │   ├── get.php
+    │   └── send.php
+    ├── config/
+    │   ├── config.example.php
+    │   ├── config.php
+    │   └── response.php
+    └── contact/
+        └── save.php
+```
 
 
 ---
@@ -88,7 +85,9 @@ CreativeStudio/
 
 ### 1 Clone the repository
 
+```bash
 git clone https://github.com/maxi-design/CreativeStudio.git
+```
 
 
 ---
@@ -166,6 +165,20 @@ http://localhost/CreativeStudio/admin/login.php
 - `config.example.php` is included as a configuration template.
 
 ---
+
+## Screenshots
+
+### Landing Page
+![Landing](screenshots/landing.png)
+
+### Chat Widget
+![Chat Widget](screenshots/chat-widget.png)
+
+### Admin Login
+![Admin Login](screenshots/admin-login.png)
+
+### Admin Panel
+![Admin Panel](screenshots/admin-panel.png)
 
 # Author
 
